@@ -1,5 +1,4 @@
 # Add your code here
-require "pry"
 
 songs = [
   "Phoenix - 1901",
@@ -43,28 +42,23 @@ def exit_jukebox
   puts "Goodbye"
 end
 
-def run
-  puts "Please enter a command:"
-  command_input = gets.strip
-  
-  # continuing_input = ["help", "list", "play", "exit"]
-  # while continuing_input.include?(command_input)
-  
-  loop do
-  
-    case = command_input
-      when "help"
-        help
-      when "list"
-        list
-      when "play"
-        play
-      when "exit"
-        exit_jukebox
-        break
-      end
-    end
-    run
+def run(songs)
+  while true do
+    puts "Please enter a command:"
+    command_input = gets.strip
     
+    case command_input
+    when "exit"
+      print exit_jukebox
+      break
+    when "help"
+      help
+    when "list"
+      list(songs)
+    when "play"
+      play(songs)
+    else
+      puts "Invalid input, please try again"
+    end
   end
 end
